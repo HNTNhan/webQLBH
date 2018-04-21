@@ -1,9 +1,209 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Index</title>
-</head>
-<body>
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/ico" href="image/home.png" />
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="css/jquery-3.3.1.min.js"></script>
+    <style type="text/css">
+    #over {
+        display: none;
+        background: #000;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+        z-index: 999;
+    }
+
+    a,
+    a:visited,
+    a:active {
+        text-decoration: none;
+    }
+
+    .login {
+        background-color: #85B561;
+        height: auto;
+        width: 450px;
+        font-family: Arial;
+        font-size: medium;
+        padding-bottom: 5px;
+        display: none;
+        overflow: hidden;
+        position: absolute;
+        z-index: 99999;
+        top: 400	%;
+        margin-left: -430%;
+    }
+
+    .login .login_title {
+        color: white;
+        font-size: 16px;
+        padding: 8px 0 5px 8px;
+        text-align: left;
+    }
+
+    .login-content label {
+        display: block;
+        padding-bottom: 7px;
+    }
+
+    .login-content span {
+        display: block;
+    }
+
+    .login-content {
+        padding-left: 35px;
+        background-color: white;
+        margin-left: 5px;
+        margin-right: 5px;
+        height: auto;
+        padding-top: 15px;
+        overflow: hidden;
+    }
+
+    .img-close {
+        float: right;
+        margin-top: -43px;
+        margin-right: 5px
+    }
+
+    .button {
+        display: inline-block;
+        min-width: 46px;
+        text-align: center;
+        color: #444;
+        font-size: 14px;
+        font-weight: 700;
+        height: 36px;
+        padding: 0px 8px;
+        line-height: 36px;
+        border-radius: 4px;
+        transition: all 0.218s ease 0s;
+        border: 1px solid #DCDCDC;
+        background-color: #F5F5F5;
+        background-image: -moz-linear-gradient(center top, #F5F5F5, #F1F1F1);
+        cursor: pointer;
+    }
+
+    .button:hover {
+        border: 1px solid #DCDCDC;
+        text-decoration: none;
+        -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .login input {
+        border: 1px solid #D5D5D5;
+        border-radius: 5px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, .07) inset;
+        color: black;
+        font: 12px/25px Arial;
+        height: 28px;
+        padding: 0px 8px;
+        word-spacing: 0.1em;
+        width: 300px;
+    }
+
+    .submit-button {
+        display: inline-block;
+        padding: auto;
+        margin: 10px 0;
+        width: 150px;
+    }
+    </style>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('a.login-window').click(function() {
+            //lấy giá trị thuộc tính href - chính là phần tử "#login-box"
+            var loginBox = $(this).attr('href');
+
+            //cho hiện hộp đăng nhập trong 300ms
+            $(loginBox).fadeIn(300);
+
+            // thêm phần tử id="over" vào sau body
+            $('body').append('<div id="over">');
+            $('#over').fadeIn(300);
+
+            return false;
+        });
+
+        // khi click đóng hộp thoại
+        $(document).on('click', "a.close, #over", function() {
+            $('#over, .login').fadeOut(300, function() {
+                $('#over').remove();
+            });
+            return false;
+        });
+    });
+    </script>
+    <script type="text/javascript">
+    	function check(){
+    		var username = document.getElementById("username").value;
+    		var password = document.getElementById("password").value;
+    		if(username == "admin"){
+    			if(password == "12345")
+    				window.location="./admin.html";
+    		}
+
+    	}
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid" style="background-color: blue">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header col-md-2 col-xs-4">
+                <a class="navbar-brand" style="color: white" href="#"><span>Trang chủ</span></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 col-md-8">
+                <form class="navbar-form navbar-left col-md-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Tìm sản phẩm mong muốn...">
+                    </div>
+                    <button type="submit" class="btn btn-default">Tìm kiếm</button>
+                </form>
+                <ul class="nav navbar-nav col-md-4">
+                    <li><a href="#" style="color: white"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"><span style="font-family: Arial; margin: 0 0; padding: 0 0">Theo dõi đơn hàng</span></span></a></li>
+                    <li><a href="#" style="color: white"><span class="glyphicon glyphicon-bell" aria-hidden="true"><span style="font-family: Arial; margin: 0 0; padding: 0 0">Thông báo của bạn</span></span></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right col-md-2">
+                    <li>
+                        <a class="login-window" href="#login-box" style="color: white">Đăng nhập/Đăng ký</a>
+                        <div class="login" id="login-box">Đăng nhập
+                            <a class="close" href="#"><img class="img-close" title="Close Window" alt="Close" src="close.png" /></a>
+                            <form class="login-content" action="#" method="post">
+                                <label class="username">
+                                    <span>Tên tài khoản</span>
+                                    <input id="username" type="text" autocomplete="on" name="username" placeholder="Tên tài khoản" value="" />
+                                </label>
+                                <label class="password">
+                                    <span>Mật khẩu</span>
+                                    <input id="password" type="password" name="password" placeholder="Mật khẩu" value="" />
+                                </label>
+                                <button class="button submit-button" type="button" onclick="check()">Đăng nhập</button>
+                                <button class="button submit-button" type="button" href="#">Đăng ký</button>
+                                <br>
+                                <a class="forgot" href="#">Quên mật khẩu?</a></form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <script src="css/jquery-3.3.1.min.js"></script>
+    <script src="css/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 </body>
+
 </html>
